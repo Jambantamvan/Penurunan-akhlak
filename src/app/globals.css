@@ -1,26 +1,794 @@
 @import "tailwindcss";
 
+/* UIUX.txt Exact Design System */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Exact Color Palette from UIUX.txt */
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --dark-bg: #1a1a2e;
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: #b8b8b8;
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.2);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--dark-bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Background Animation - Exact from UIUX.txt */
+.background-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+.background-animation::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+  animation: float 20s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Header Styling - UIUX.txt style */
+.header {
+  padding: 2rem 0;
+  text-align: center;
+  position: relative;
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Cards - Exact from UIUX.txt */
+.welcome-card, .question-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 3rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(20px);
+  opacity: 0;
+  animation: slideUp 0.8s ease forwards;
+}
+
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.welcome-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  background: var(--secondary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.welcome-text {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+/* Progress Bar - UIUX.txt style */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent-gradient);
+  transition: width 0.5s ease;
+  border-radius: 4px;
+}
+
+/* Question Options - Exact from UIUX.txt */
+.options-container {
+  display: grid;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.option {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.option:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(102, 126, 234, 0.5);
+  transform: translateY(-2px);
+}
+
+.option.selected {
+  background: rgba(102, 126, 234, 0.2);
+  border-color: #667eea;
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+}
+
+.option-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.option-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* Question Title */
+.question-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+}
+
+/* Buttons - UIUX.txt style */
+.btn {
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: none;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Navigation */
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+/* Thank You Screen */
+.thank-you-card {
+  text-align: center;
+}
+
+.thank-you-card.active {
+  display: block;
+  animation: scaleIn 0.8s ease forwards;
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 2rem;
+  background: var(--accent-gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Question Card Active State */
+.question-card.active {
+  display: block;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .welcome-card, .question-card {
+    padding: 2rem 1.5rem;
+    margin: 1rem;
+  }
+  
+  .logo {
+    font-size: 2rem;
+  }
+  
+  .welcome-title {
+    font-size: 1.8rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .question-title {
+    font-size: 1.5rem;
+    line-height: 1.4;
+  }
+  
+  .option {
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .option-label {
+    font-size: 1rem;
+  }
+  
+  .navigation {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  
+  .progress-bar {
+    height: 6px;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+  .welcome-card, .question-card {
+    margin: 0.5rem;
+    padding: 1.5rem 1rem;
+  }
+  
+  .header {
+    padding: 1rem 0;
+  }
+  
+  .logo {
+    font-size: 1.8rem;
+  }
+  
+  .welcome-title, .question-title {
+    font-size: 1.4rem;
+  }
+  
+  .welcome-text {
+    font-size: 0.95rem;
+  }
+  
+  .option {
+    padding: 0.875rem;
+  }
+  
+  .btn {
+    padding: 0.875rem;
+    font-size: 0.95rem;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+  }
+}
+
+/* Admin Dashboard Glass Theme */
+.admin-container {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+}
+
+.admin-tab {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.admin-tab.active {
+  background: var(--primary-gradient);
+  color: white;
+  border-color: transparent;
+}
+
+.admin-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+}
+
+/* Mobile responsive for admin */
+@media (max-width: 768px) {
+  .admin-container {
+    margin: 0.5rem;
+    padding: 1rem;
+    border-radius: 16px;
+  }
+  
+  .admin-tab {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .admin-card {
+    padding: 1rem;
+    margin: 0.5rem 0;
+  }
+}
+
+/* UNY Logo Responsive Styles */
+.uny-logo-fixed {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(65, 64, 142, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.uny-logo-fixed img {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .uny-logo-fixed {
+    width: 40px;
+    height: 40px;
+    top: 15px;
+    left: 15px;
+  }
+  
+  .uny-logo-fixed img {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .uny-logo-fixed span {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .uny-logo-fixed {
+    width: 35px;
+    height: 35px;
+    top: 10px;
+    left: 10px;
+  }
+  
+  .uny-logo-fixed img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Loading Animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Admin Header Responsive */
+@media (max-width: 768px) {
+  .admin-header {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    align-items: flex-start !important;
+  }
+  
+  .admin-title {
+    font-size: 1rem !important;
+  }
+  
+  .admin-subtitle {
+    font-size: 0.65rem !important;
+  }
+  
+  .admin-header-controls {
+    width: 100% !important;
+    justify-content: space-between !important;
+    gap: 0.25rem !important;
+  }
+  
+  .back-to-survey-btn .btn-text {
+    display: none;
+  }
+  
+  .connection-status span {
+    display: none;
+  }
+  
+  .refresh-btn span:last-child {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-header {
+    padding: 0.375rem !important;
+  }
+  
+  .admin-title {
+    font-size: 0.9rem !important;
+  }
+  
+  .admin-subtitle {
+    font-size: 0.6rem !important;
+  }
+  
+  .admin-header-controls button {
+    padding: 0.3rem 0.5rem !important;
+    height: 28px !important;
+  }
+  
+  .connection-status {
+    padding: 0.3rem 0.4rem !important;
+    height: 28px !important;
+  }
+}
+
+/* Loading Animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Admin Page Animations */
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px); 
+    opacity: 1;
+  }
+  50% { 
+    transform: translateY(-20px); 
+    opacity: 0.8;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Admin Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .admin-header {
+    padding: 0.5rem !important;
+    gap: 0.375rem !important;
+  }
+  
+  .admin-title {
+    font-size: 1rem !important;
+  }
+  
+  .admin-subtitle {
+    font-size: 0.7rem !important;
+  }
+  
+  .admin-header-controls {
+    gap: 0.25rem !important;
+  }
+  
+  .back-to-survey-btn .btn-text {
+    display: none;
+  }
+  
+  .back-to-survey-btn {
+    padding: 0.3rem !important;
+    min-width: 28px !important;
+    height: 28px !important;
+  }
+  
+  .connection-status {
+    padding: 0.25rem !important;
+    gap: 0 !important;
+    height: 28px !important;
+  }
+  
+  .connection-status span {
+    display: none;
+  }
+  
+  .refresh-btn {
+    padding: 0.3rem !important;
+    min-width: 28px !important;
+    height: 28px !important;
+  }
+  
+  .admin-nav {
+    padding: 0 0.75rem !important;
+    overflow-x: auto;
+  }
+  
+  .admin-nav-tabs {
+    min-width: max-content;
+    gap: 0 !important;
+  }
+  
+  .admin-nav-tab {
+    padding: 0.75rem 1rem !important;
+    font-size: 0.8rem !important;
+    min-width: auto;
+    white-space: nowrap;
+  }
+  
+  .admin-nav-tab span:last-child {
+    display: none;
+  }
+  
+  .admin-main {
+    padding: 0.75rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-header {
+    padding: 0.5rem !important;
+    gap: 0.375rem !important;
+  }
+  
+  .admin-title {
+    font-size: 1rem !important;
+  }
+  
+  .admin-subtitle {
+    font-size: 0.7rem !important;
+  }
+  
+  .back-to-survey-btn, .refresh-btn {
+    padding: 0.375rem !important;
+    min-width: 28px !important;
+  }
+  
+  .connection-status {
+    padding: 0.25rem !important;
+  }
+  
+  .admin-nav-tab {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.75rem !important;
+  }
+  
+  .admin-main {
+    padding: 0.5rem !important;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  
+  .stat-card {
+    padding: 1.5rem !important;
+  }
+  
+  .stat-number {
+    font-size: 2.5rem !important;
+  }
+  
+  .overview-cards {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  
+  .overview-card {
+    padding: 1.5rem !important;
+  }
+  
+  .data-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .data-table {
+    min-width: 600px;
+  }
+  
+  .data-table th,
+  .data-table td {
+    padding: 0.75rem 0.5rem !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+/* Navigation Responsive Styles */
+@media (max-width: 768px) {
+  nav.fixed {
+    top: 10px !important;
+    right: 10px !important;
+  }
+  
+  nav .glass {
+    padding: 8px !important;
+    gap: 4px !important;
+  }
+  
+  nav a {
+    padding: 8px 12px !important;
+    font-size: 0.75rem !important;
+  }
+  
+  nav .w-4 {
+    width: 14px !important;
+    height: 14px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  nav.fixed {
+    top: 8px !important;
+    right: 8px !important;
+  }
+  
+  nav .glass {
+    padding: 6px !important;
+    gap: 2px !important;
+  }
+  
+  nav a {
+    padding: 6px 10px !important;
+    min-width: 32px !important;
+  }
+  
+  nav a span {
+    display: none !important;
+  }
 }
