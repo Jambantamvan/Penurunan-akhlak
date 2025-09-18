@@ -62,7 +62,7 @@ export default function ThankYouScreen() {
       
       <p className="welcome-text" style={{ marginBottom: '2rem' }}>
         Survey Anda telah berhasil dikirim. Kontribusi Anda sangat berharga untuk penelitian 
-        <span style={{ color: 'var(--accent-start)', fontWeight: '600' }}> "Penurunan Akhlak Remaja"</span> ini.
+        <span style={{ color: 'var(--accent-start)', fontWeight: '600' }}> &ldquo;Penurunan Akhlak Remaja&rdquo;</span> ini.
       </p>
 
       {/* Respondent Code */}
@@ -121,8 +121,8 @@ export default function ThankYouScreen() {
           marginBottom: '0.5rem',
           textAlign: 'center'
         }}>
-          "Dan barangsiapa bertakwa kepada Allah, niscaya Dia akan membuat jalan keluar baginya, 
-          dan Dia memberinya rezeki dari arah yang tidak disangka-sangkanya."
+          "          &ldquo;Dan barangsiapa bertakwa kepada Allah, niscaya Dia akan membuat jalan keluar baginya, 
+          dan Dia memberinya rezeki dari arah yang tidak disangka-sangkanya.&rdquo;"
         </p>
         <p style={{ 
           fontSize: '0.85rem', 

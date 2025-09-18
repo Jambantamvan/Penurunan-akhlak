@@ -85,7 +85,7 @@ export async function getAnalyticsSummary() {
     }
     
     // 2. Try RPC function
-    let { data, error } = await supabase.rpc('get_analytics_summary')
+    const { data, error } = await supabase.rpc('get_analytics_summary')
     
     if (!error && data) {
       return { data, error: null }
