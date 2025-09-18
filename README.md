@@ -1,5 +1,7 @@
 # Survey Akhlak Remaja - Next.js Application
 
+**Repository**: [https://github.com/Jambantamvan/Penurunan-akhlak](https://github.com/Jambantamvan/Penurunan-akhlak)
+
 Aplikasi survey komprehensif untuk menganalisis penurunan akhlak remaja dengan dashboard analytics real-time.
 
 ## 🚀 Features
