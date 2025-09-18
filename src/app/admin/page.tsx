@@ -34,7 +34,14 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     setIsClient(true)
-    // Don't load data until authenticated
+    // Check if we're in demo mode
+    const isDemoMode = !process.env.NEXT_PUBLIC_SUPABASE_URL || 
+                      process.env.NEXT_PUBLIC_SUPABASE_URL === 'https://placeholder.supabase.co'
+    
+    if (isDemoMode) {
+      console.warn('Running in demo mode - Supabase not configured')
+      setConnectionStatus('error')
+    }
   }, [])
 
   useEffect(() => {
@@ -62,6 +69,19 @@ export default function AdminDashboard() {
   const checkConnection = async () => {
     try {
       setConnectionStatus('checking')
+      
+      // Check if we're in demo mode
+      const isDemoMode = !process.env.NEXT_PUBLIC_SUPABASE_URL || 
+                        process.env.NEXT_PUBLIC_SUPABASE_URL === 'https://placeholder.supabase.co'
+      
+      if (isDemoMode) {
+        console.log('Demo mode detected - skipping database connection')
+        setConnectionStatus('error')
+        setIsLoading(false)
+        setStoreLoading(false)
+        return
+      }
+      
       await loadInitialData()
       setConnectionStatus('connected')
     } catch (error) {
@@ -72,6 +92,21 @@ export default function AdminDashboard() {
 
   const loadInitialData = async () => {
     if (!isClient) return
+    
+    // Check if we're in demo mode
+    const isDemoMode = !process.env.NEXT_PUBLIC_SUPABASE_URL || 
+                      process.env.NEXT_PUBLIC_SUPABASE_URL === 'https://placeholder.supabase.co'
+    
+    if (isDemoMode) {
+      console.log('Demo mode - using mock data')
+      setTotalResponses(0)
+      setQuestionAnalytics([])
+      setDemographics({ gender: {}, age: {}, crossAnalysis: {} })
+      setIndividualResponses([])
+      setIsLoading(false)
+      setStoreLoading(false)
+      return
+    }
     
     setIsLoading(true)
     setStoreLoading(true)
@@ -118,6 +153,15 @@ export default function AdminDashboard() {
   }
 
   const refreshData = async () => {
+    // Check if we're in demo mode
+    const isDemoMode = !process.env.NEXT_PUBLIC_SUPABASE_URL || 
+                      process.env.NEXT_PUBLIC_SUPABASE_URL === 'https://placeholder.supabase.co'
+    
+    if (isDemoMode) {
+      console.log('Demo mode - cannot refresh data')
+      return
+    }
+    
     await checkConnection()
   }
 
