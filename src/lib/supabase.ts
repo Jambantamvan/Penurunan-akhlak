@@ -1,9 +1,15 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+// Fallback values untuk build environment
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co'
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key'
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+
+// Check if we're in development and missing env vars
+if (typeof window !== 'undefined' && supabaseUrl === 'https://placeholder.supabase.co') {
+  console.warn('⚠️ Supabase environment variables not configured. Please set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY')
+}
 
 // Types for database tables
 export interface Survey {

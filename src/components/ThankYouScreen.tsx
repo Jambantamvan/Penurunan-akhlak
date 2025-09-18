@@ -57,7 +57,7 @@ export default function ThankYouScreen() {
         WebkitTextFillColor: 'transparent',
         backgroundClip: 'text'
       }}>
-        جَزَاكَ اللّٰهُ خَيْرًا 🎉
+        جَزَاكَ اللّٰهُ خَيْرًا 
       </h2>
       
       <p className="welcome-text" style={{ marginBottom: '2rem' }}>

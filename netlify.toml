@@ -4,6 +4,8 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  NEXT_PUBLIC_SUPABASE_URL = "https://placeholder.supabase.co"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "placeholder-key"
 
 [[redirects]]
   from = "/*"
@@ -13,6 +15,7 @@
 [functions]
   directory = ".netlify/functions"
 
-# Environment variables placeholder - add your actual values in Netlify dashboard
-# NEXT_PUBLIC_SUPABASE_URL = "your-supabase-url"
-# NEXT_PUBLIC_SUPABASE_ANON_KEY = "your-supabase-anon-key"
+# Add your actual Supabase credentials in Netlify dashboard:
+# Site settings > Environment variables
+# NEXT_PUBLIC_SUPABASE_URL = "your-actual-supabase-url"
+# NEXT_PUBLIC_SUPABASE_ANON_KEY = "your-actual-supabase-anon-key"

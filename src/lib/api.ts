@@ -8,8 +8,19 @@ export interface SurveySubmissionResult {
   error?: string
 }
 
+// Check if we're in demo mode
+function isDemoMode(): boolean {
+  return !process.env.NEXT_PUBLIC_SUPABASE_URL || 
+         process.env.NEXT_PUBLIC_SUPABASE_URL === 'https://placeholder.supabase.co'
+}
+
 // Check database connectivity and setup
 export async function checkDatabaseSetup(): Promise<boolean> {
+  if (isDemoMode()) {
+    console.log('Running in demo mode - Supabase not configured')
+    return false
+  }
+  
   try {
     const { data, error } = await supabase
       .from('surveys')

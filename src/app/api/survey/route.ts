@@ -4,8 +4,25 @@ import { supabase } from '@/lib/supabase'
 export async function POST(request: NextRequest) {
   try {
     console.log('=== API SURVEY POST CALLED ===')
-    console.log('Supabase URL:', process.env.NEXT_PUBLIC_SUPABASE_URL ? 'SET' : 'NOT SET')
-    console.log('Supabase Key:', process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ? 'SET' : 'NOT SET')
+    
+    // Check if Supabase is properly configured
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    
+    if (!supabaseUrl || !supabaseKey || supabaseUrl === 'https://placeholder.supabase.co') {
+      console.warn('Supabase not configured, returning mock response')
+      return NextResponse.json(
+        { 
+          success: true, 
+          message: 'Survey submitted (demo mode - Supabase not configured)',
+          respondentCode: 'DEMO' + Math.random().toString(36).substr(2, 3).toUpperCase()
+        },
+        { status: 200 }
+      )
+    }
+    
+    console.log('Supabase URL:', supabaseUrl ? 'SET' : 'NOT SET')
+    console.log('Supabase Key:', supabaseKey ? 'SET' : 'NOT SET')
     
     const body = await request.json()
     console.log('Request body:', JSON.stringify(body, null, 2))
