@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { surveyQuestions } from '@/lib/survey-data'
 import { useSurveyStore } from '@/store/survey-store'
 
 export default function ThankYouScreen() {
@@ -179,7 +180,7 @@ export default function ThankYouScreen() {
       {/* Stats menggunakan welcome-stats style */}
       <div className="welcome-stats" style={{ marginBottom: '2rem' }}>
         <div className="stat-item">
-          <div className="stat-number">10</div>
+          <div className="stat-number">{surveyQuestions.length}</div>
           <div className="stat-label">Pertanyaan Dijawab</div>
         </div>
         <div className="stat-item">

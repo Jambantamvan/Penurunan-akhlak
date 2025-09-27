@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { SurveyQuestion, SurveyOption } from '@/lib/survey-data'
+import { SurveyQuestion, SurveyOption, surveyQuestions } from '@/lib/survey-data'
 import { useSurveyStore } from '@/store/survey-store'
 import ProgressBar from './ProgressBar'
 import ValidationPopup from './ValidationPopup'
@@ -56,7 +56,8 @@ export default function QuestionCard({ question, isVisible }: QuestionCardProps)
     }
     
     console.log('Moving to next step from:', currentStep, 'to:', currentStep + 1)
-    if (currentStep === 10) {
+    const totalQuestions = surveyQuestions.length
+    if (currentStep === totalQuestions) {
       console.log('This is the last question, submitting survey...')
     }
     
@@ -126,7 +127,7 @@ export default function QuestionCard({ question, isVisible }: QuestionCardProps)
             transform: !selectedOption ? 'none' : undefined
           }}
         >
-          {currentStep === 10 ? 'Selesai' : 'Selanjutnya'}
+          {currentStep === surveyQuestions.length ? 'Selesai' : 'Selanjutnya'}
         </button>
       </div>
 

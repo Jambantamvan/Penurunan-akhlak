@@ -1,6 +1,7 @@
 'use client'
 
 import { useSurveyStore } from '@/store/survey-store'
+import { surveyQuestions } from '@/lib/survey-data'
 
 export default function WelcomeScreen() {
   const { setCurrentStep } = useSurveyStore()
@@ -28,7 +29,7 @@ export default function WelcomeScreen() {
       
       <div className="stats-grid">
         <div className="stat-item">
-          <span className="stat-number">10</span>
+          <span className="stat-number">{surveyQuestions.length}</span>
           <span className="stat-label">Pertanyaan</span>
         </div>
         <div className="stat-item">

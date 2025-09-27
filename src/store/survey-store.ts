@@ -75,7 +75,8 @@ export const useSurveyStore = create<SurveyState>((set, get) => ({
 
   nextStep: () => {
     const { currentStep } = get()
-    if (currentStep <= 10) {  // Allow going from step 10 to 11 for submission
+    const totalQuestions = surveyQuestions.length
+    if (currentStep <= totalQuestions) {  // Allow going to submission step
       set({ currentStep: currentStep + 1 })
     }
   },

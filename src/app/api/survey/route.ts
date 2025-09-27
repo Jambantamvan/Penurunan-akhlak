@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
+import { surveyQuestions } from '@/lib/survey-data'
 
 export async function POST(request: NextRequest) {
   try {
@@ -39,10 +40,11 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate answers format
-    if (answers.length !== 10) {
-      console.error('Wrong number of answers:', answers.length)
+    const expectedAnswers = surveyQuestions.length
+    if (answers.length !== expectedAnswers) {
+      console.error('Wrong number of answers:', answers.length, 'expected:', expectedAnswers)
       return NextResponse.json(
-        { success: false, error: 'Survey must have exactly 10 answers' },
+        { success: false, error: `Survey must have exactly ${expectedAnswers} answers` },
         { status: 400 }
       )
     }
