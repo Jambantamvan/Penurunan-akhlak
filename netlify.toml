@@ -4,8 +4,8 @@
 
 [build.environment]
   NODE_VERSION = "20"
-  NEXT_PUBLIC_SUPABASE_URL = "https://placeholder.supabase.co"
-  NEXT_PUBLIC_SUPABASE_ANON_KEY = "placeholder-key"
+  NEXT_PUBLIC_SUPABASE_URL = "https://pdffpypmzgxadzwfvsud.supabase.co"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBkZmZweXBtemd4YWR6d2Z2c3VkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxMzM5OTMsImV4cCI6MjA3MzcwOTk5M30.BKPWXq7uO-I2JIn6jrQ4NlpsNypdJOY8ZRdd62XwZSM"
 
 [[redirects]]
   from = "/*"
