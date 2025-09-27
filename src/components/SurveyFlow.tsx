@@ -21,11 +21,15 @@ export default function SurveyFlow() {
     nextStep
   } = useSurveyStore()
 
+  // Calculate dynamic values based on survey questions
+  const totalQuestions = surveyQuestions.length
+  const submissionStep = totalQuestions + 1
+
   // Handle survey submission when reaching the last question
   useEffect(() => {
     const handleSubmission = async () => {
-      if (currentStep === 11 && !isCompleted && !isSubmitting && answers.length === 10) {
-        console.log('Starting survey submission...', { sessionId, answers })
+      if (currentStep === submissionStep && !isCompleted && !isSubmitting && answers.length === totalQuestions) {
+        console.log('Starting survey submission...', { sessionId, answers, totalQuestions })
         setIsSubmitting(true)
         
         try {
@@ -54,14 +58,14 @@ export default function SurveyFlow() {
 
   // Auto-advance to thank you screen after submission
   useEffect(() => {
-    if (currentStep === 10 && answers.length === 10) {
+    if (currentStep === totalQuestions && answers.length === totalQuestions) {
       // Move to submission step
       nextStep()
     }
-  }, [currentStep, answers.length, nextStep])
+  }, [currentStep, answers.length, nextStep, totalQuestions])
 
   // Show loading during submission
-  if (currentStep === 11 && isSubmitting) {
+  if (currentStep === submissionStep && isSubmitting) {
     return (
       <div className="glass rounded-[var(--radius-glass)] p-12 shadow-[var(--shadow-glass)] text-center">
         <div className="animate-spin w-12 h-12 border-4 border-accent-start border-t-transparent rounded-full mx-auto mb-6"></div>
@@ -72,7 +76,7 @@ export default function SurveyFlow() {
   }
 
   // Show thank you screen after successful submission
-  if (isCompleted || currentStep === 11) {
+  if (isCompleted || currentStep === submissionStep) {
     return <ThankYouScreen />
   }
 

@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { SurveyAnswer } from '@/lib/survey-data'
+import { SurveyAnswer, surveyQuestions } from '@/lib/survey-data'
 
 interface SurveyState {
   currentStep: number
@@ -30,7 +30,7 @@ const generateSessionId = () => {
 }
 
 export const useSurveyStore = create<SurveyState>((set, get) => ({
-  currentStep: 0, // 0 = welcome screen, 1-10 = questions
+  currentStep: 0, // 0 = welcome screen, 1-N = questions
   answers: [],
   sessionId: generateSessionId(),
   respondentCode: null,
@@ -106,8 +106,9 @@ export const useSurveyStore = create<SurveyState>((set, get) => ({
 
   getProgress: () => {
     const { currentStep } = get()
+    const totalQuestions = surveyQuestions.length
     if (currentStep === 0) return 0
-    return Math.round((currentStep / 10) * 100)
+    return Math.round((currentStep / totalQuestions) * 100)
   }
 }))
 
