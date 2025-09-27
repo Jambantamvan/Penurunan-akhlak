@@ -38,300 +38,201 @@ export const surveyQuestions: SurveyQuestion[] = [
     ]
   },
   {
-    id: 'age',
-    title: 'Umur Anda berapa?',
+    id: 'negative_behavior',
+    title: 'Perilaku apa yang pernah Anda lakukan semasa remaja?',
     order: 2,
     options: [
       {
-        value: '10-12',
-        label: '10-12 tahun',
-        description: 'Usia sekolah dasar'
+        value: 'free_socialization',
+        label: 'Pergaulan bebas tanpa kontrol',
+        description: 'Bergaul secara bebas tanpa batasan dan pengawasan'
       },
       {
-        value: '13-15',
-        label: '13-15 tahun',
-        description: 'Usia sekolah menengah pertama'
+        value: 'social_media_addiction',
+        label: 'Kecanduan media sosial dan konten negatif',
+        description: 'Menghabiskan waktu berlebihan di media sosial dengan konten negatif'
       },
       {
-        value: '16-18',
-        label: '16-18 tahun',
-        description: 'Usia sekolah menengah atas'
+        value: 'substance_abuse',
+        label: 'Penyalahgunaan narkoba, alkohol, dan rokok',
+        description: 'Menggunakan narkoba, alkohol, atau merokok'
       },
       {
-        value: '19-21',
-        label: '19-21 tahun',
-        description: 'Usia mahasiswa'
+        value: 'consumerism',
+        label: 'Perilaku konsumtif dan hedonis',
+        description: 'Berperilaku konsumtif dan mencari kesenangan duniawi'
       },
       {
-        value: '22-25',
-        label: '22-25 tahun',
-        description: 'Usia dewasa muda'
-      },
-      {
-        value: '26-30',
-        label: '26-30 tahun',
-        description: 'Usia dewasa'
-      },
-      {
-        value: '31+',
-        label: '31+ tahun',
-        description: 'Usia dewasa matang'
+        value: 'violence',
+        label: 'Tawuran dan kekerasan',
+        description: 'Terlibat dalam tawuran dan perilaku kekerasan'
       }
     ]
   },
   {
-    id: 'bullying',
-    title: 'Seberapa sering Anda melihat perilaku perundungan di lingkungan Anda?',
+    id: 'improvement_activities',
+    title: 'Kegiatan apa yang membantu Anda untuk memperbaiki akhlak Anda?',
     order: 3,
     options: [
       {
-        value: 'never',
-        label: 'Tidak Pernah',
-        description: 'Saya tidak pernah melihat perilaku perundungan'
+        value: 'religious_activities',
+        label: 'Rajin mengikuti kegiatan keagamaan (pengajian, kajian, atau ibadah bersama)',
+        description: 'Aktif dalam kegiatan keagamaan untuk memperbaiki akhlak'
       },
       {
-        value: 'rarely',
-        label: 'Jarang (1-2 kali dalam 6 bulan)',
-        description: 'Sesekali melihat, tapi tidak sering terjadi'
+        value: 'social_service',
+        label: 'Aktif dalam kegiatan sosial dan bakti masyarakat',
+        description: 'Terlibat dalam kegiatan sosial dan membantu masyarakat'
       },
       {
-        value: 'sometimes',
-        label: 'Kadang-kadang (1-2 kali per bulan)',
-        description: 'Terjadi beberapa kali dalam sebulan'
+        value: 'positive_organization',
+        label: 'Mengikuti organisasi sekolah atau kampus yang positif',
+        description: 'Bergabung dengan organisasi yang memberikan dampak positif'
       },
       {
-        value: 'often',
-        label: 'Sering (1-2 kali per minggu)',
-        description: 'Hampir setiap minggu melihat kejadian'
+        value: 'reading_habit',
+        label: 'Membiasakan membaca buku atau literatur yang bermanfaat',
+        description: 'Mengembangkan kebiasaan membaca buku yang bermanfaat'
       },
       {
-        value: 'very_often',
-        label: 'Sangat Sering (hampir setiap hari)',
-        description: 'Hampir setiap hari melihat perilaku perundungan'
+        value: 'good_friendship',
+        label: 'Menjalin pergaulan dengan teman yang berakhlak baik dan saling mengingatkan',
+        description: 'Berteman dengan orang-orang yang berakhlak baik'
       }
     ]
   },
   {
-    id: 'hate_speech',
-    title: 'Bagaimana dampak ujaran kasar terhadap kenyamanan lingkungan sosial Anda?',
+    id: 'peer_free_socialization',
+    title: 'Saya sering melihat teman sebaya terlibat dalam pergaulan bebas.',
     order: 4,
     options: [
       {
-        value: 'no_impact',
-        label: 'Tidak Ada Dampak',
-        description: 'Saya tidak merasa terganggu sama sekali'
+        value: 'strongly_agree',
+        label: 'Sangat Setuju',
+        description: 'Sangat setuju dengan pernyataan ini'
       },
       {
-        value: 'slight_impact',
-        label: 'Dampak Kecil (sedikit mengganggu)',
-        description: 'Sedikit mengganggu tapi masih bisa diabaikan'
+        value: 'agree',
+        label: 'Setuju',
+        description: 'Setuju dengan pernyataan ini'
       },
       {
-        value: 'moderate_impact',
-        label: 'Dampak Sedang (cukup mengganggu)',
-        description: 'Cukup mengganggu dan membuat tidak nyaman'
+        value: 'disagree',
+        label: 'Tidak Setuju',
+        description: 'Tidak setuju dengan pernyataan ini'
       },
       {
-        value: 'high_impact',
-        label: 'Dampak Besar (sangat mengganggu)',
-        description: 'Sangat mengganggu dan membuat lingkungan tidak kondusif'
-      },
-      {
-        value: 'severe_impact',
-        label: 'Dampak Sangat Besar (merusak suasana)',
-        description: 'Merusak suasana dan membuat lingkungan toxic'
+        value: 'strongly_disagree',
+        label: 'Sangat Tidak Setuju',
+        description: 'Sangat tidak setuju dengan pernyataan ini'
       }
     ]
   },
   {
-    id: 'gossip',
-    title: 'Seberapa sering Anda mendengar atau melihat perilaku ghibah (membicarakan keburukan orang lain)?',
+    id: 'social_media_influence',
+    title: 'Media sosial berpengaruh besar terhadap pola pikir dan perilaku remaja.',
     order: 5,
     options: [
       {
-        value: 'never',
-        label: 'Tidak Pernah',
-        description: 'Lingkungan saya bebas dari ghibah'
+        value: 'strongly_agree',
+        label: 'Sangat Setuju',
+        description: 'Sangat setuju dengan pernyataan ini'
       },
       {
-        value: 'rarely',
-        label: 'Jarang (sesekali)',
-        description: 'Sesekali terjadi dalam situasi tertentu'
+        value: 'agree',
+        label: 'Setuju',
+        description: 'Setuju dengan pernyataan ini'
       },
       {
-        value: 'sometimes',
-        label: 'Kadang-kadang (beberapa kali per bulan)',
-        description: 'Beberapa kali dalam sebulan'
+        value: 'disagree',
+        label: 'Tidak Setuju',
+        description: 'Tidak setuju dengan pernyataan ini'
       },
       {
-        value: 'often',
-        label: 'Sering (hampir setiap minggu)',
-        description: 'Hampir setiap minggu mendengar ghibah'
-      },
-      {
-        value: 'very_often',
-        label: 'Sangat Sering (setiap hari)',
-        description: 'Ghibah sudah menjadi hal yang sangat umum'
+        value: 'strongly_disagree',
+        label: 'Sangat Tidak Setuju',
+        description: 'Sangat tidak setuju dengan pernyataan ini'
       }
     ]
   },
   {
-    id: 'pornography',
-    title: 'Seberapa mudah akses konten pornografi bagi remaja di lingkungan Anda?',
+    id: 'violence_occurrence',
+    title: 'Tawuran atau kekerasan antar remaja masih sering terjadi di lingkungan saya.',
     order: 6,
     options: [
       {
-        value: 'very_difficult',
-        label: 'Sangat Sulit (hampir tidak mungkin)',
-        description: 'Hampir tidak mungkin mengakses konten tersebut'
+        value: 'strongly_agree',
+        label: 'Sangat Setuju',
+        description: 'Sangat setuju dengan pernyataan ini'
       },
       {
-        value: 'difficult',
-        label: 'Sulit (butuh usaha khusus)',
-        description: 'Butuh usaha khusus untuk mengakses'
+        value: 'agree',
+        label: 'Setuju',
+        description: 'Setuju dengan pernyataan ini'
       },
       {
-        value: 'moderate',
-        label: 'Sedang (cukup mudah jika dicari)',
-        description: 'Cukup mudah jika memang dicari'
+        value: 'disagree',
+        label: 'Tidak Setuju',
+        description: 'Tidak setuju dengan pernyataan ini'
       },
       {
-        value: 'easy',
-        label: 'Mudah (mudah ditemukan)',
-        description: 'Mudah ditemukan tanpa usaha khusus'
-      },
-      {
-        value: 'very_easy',
-        label: 'Sangat Mudah (tersedia dimana-mana)',
-        description: 'Tersedia dimana-mana dan mudah diakses'
+        value: 'strongly_disagree',
+        label: 'Sangat Tidak Setuju',
+        description: 'Sangat tidak setuju dengan pernyataan ini'
       }
     ]
   },
   {
-    id: 'social_media',
-    title: 'Seberapa sering Anda melihat konten negatif (hate speech, cyberbullying) di media sosial?',
+    id: 'substance_accessibility',
+    title: 'Penyalahgunaan rokok, alkohol, atau narkoba mudah ditemukan di kalangan remaja.',
     order: 7,
     options: [
       {
-        value: 'never',
-        label: 'Tidak Pernah',
-        description: 'Feed media sosial saya bersih dari konten negatif'
+        value: 'strongly_agree',
+        label: 'Sangat Setuju',
+        description: 'Sangat setuju dengan pernyataan ini'
       },
       {
-        value: 'rarely',
-        label: 'Jarang (1-2 kali per bulan)',
-        description: 'Sesekali muncul di timeline'
+        value: 'agree',
+        label: 'Setuju',
+        description: 'Setuju dengan pernyataan ini'
       },
       {
-        value: 'sometimes',
-        label: 'Kadang-kadang (1-2 kali per minggu)',
-        description: 'Beberapa kali seminggu melihat konten negatif'
+        value: 'disagree',
+        label: 'Tidak Setuju',
+        description: 'Tidak setuju dengan pernyataan ini'
       },
       {
-        value: 'often',
-        label: 'Sering (beberapa kali per minggu)',
-        description: 'Sering muncul di feed media sosial'
-      },
-      {
-        value: 'very_often',
-        label: 'Sangat Sering (hampir setiap hari)',
-        description: 'Hampir setiap hari melihat konten negatif'
+        value: 'strongly_disagree',
+        label: 'Sangat Tidak Setuju',
+        description: 'Sangat tidak setuju dengan pernyataan ini'
       }
     ]
   },
   {
-    id: 'family_communication',
-    title: 'Bagaimana kondisi komunikasi dalam keluarga Anda terkait pembahasan nilai-nilai moral?',
+    id: 'supervision_importance',
+    title: 'Pengawasan orang tua dan guru berperan penting dalam mencegah dekadensi akhlak remaja.',
     order: 8,
     options: [
       {
-        value: 'very_good',
-        label: 'Sangat Baik (sering diskusi terbuka)',
-        description: 'Keluarga sering membahas nilai moral secara terbuka'
+        value: 'strongly_agree',
+        label: 'Sangat Setuju',
+        description: 'Sangat setuju dengan pernyataan ini'
       },
       {
-        value: 'good',
-        label: 'Baik (sesekali dibahas)',
-        description: 'Sesekali membahas nilai-nilai moral'
+        value: 'agree',
+        label: 'Setuju',
+        description: 'Setuju dengan pernyataan ini'
       },
       {
-        value: 'fair',
-        label: 'Cukup (jarang dibahas)',
-        description: 'Jarang membahas topik nilai moral'
+        value: 'disagree',
+        label: 'Tidak Setuju',
+        description: 'Tidak setuju dengan pernyataan ini'
       },
       {
-        value: 'poor',
-        label: 'Kurang (hampir tidak pernah)',
-        description: 'Hampir tidak pernah membahas nilai moral'
-      },
-      {
-        value: 'very_poor',
-        label: 'Sangat Kurang (tidak pernah dibahas)',
-        description: 'Tidak pernah membahas nilai-nilai moral'
-      }
-    ]
-  },
-  {
-    id: 'social_impact',
-    title: 'Bagaimana pengaruh perilaku negatif tersebut terhadap kepercayaan dan kenyamanan dalam interaksi sosial Anda?',
-    order: 9,
-    options: [
-      {
-        value: 'no_influence',
-        label: 'Tidak Berpengaruh',
-        description: 'Tidak mempengaruhi kepercayaan sosial saya'
-      },
-      {
-        value: 'slight_influence',
-        label: 'Sedikit Berpengaruh',
-        description: 'Sedikit mempengaruhi cara berinteraksi'
-      },
-      {
-        value: 'moderate_influence',
-        label: 'Cukup Berpengaruh',
-        description: 'Cukup mempengaruhi kepercayaan sosial'
-      },
-      {
-        value: 'high_influence',
-        label: 'Sangat Berpengaruh',
-        description: 'Sangat mempengaruhi kenyamanan berinteraksi'
-      },
-      {
-        value: 'destructive',
-        label: 'Merusak Kepercayaan Sosial',
-        description: 'Merusak kepercayaan dan kenyamanan sosial'
-      }
-    ]
-  },
-  {
-    id: 'solution',
-    title: 'Menurut Anda, apa solusi paling efektif untuk mengatasi masalah penurunan akhlak remaja ini?',
-    order: 10,
-    options: [
-      {
-        value: 'character_education',
-        label: 'Pendidikan Karakter di Sekolah',
-        description: 'Memperkuat pendidikan akhlak di sekolah'
-      },
-      {
-        value: 'community_empowerment',
-        label: 'Pemberdayaan dan Pengawasan Masyarakat',
-        description: 'Melibatkan komunitas dalam pengawasan dan pembinaan'
-      },
-      {
-        value: 'strict_regulation',
-        label: 'Regulasi dan Sanksi yang Lebih Ketat',
-        description: 'Membuat aturan dan sanksi yang lebih tegas'
-      },
-      {
-        value: 'technology_control',
-        label: 'Kontrol Teknologi dan Media Digital',
-        description: 'Mengatur akses konten negatif di media digital'
-      },
-      {
-        value: 'holistic_approach',
-        label: 'Pendekatan Holistik (kombinasi semua solusi)',
-        description: 'Kombinasi semua solusi di atas untuk hasil optimal'
+        value: 'strongly_disagree',
+        label: 'Sangat Tidak Setuju',
+        description: 'Sangat tidak setuju dengan pernyataan ini'
       }
     ]
   }

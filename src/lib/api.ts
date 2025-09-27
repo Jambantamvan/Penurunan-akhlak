@@ -1,4 +1,4 @@
-import { supabase } from './supabase'
+ import { supabase } from './supabase'
 import { SurveyAnswer } from './survey-data'
 
 export interface SurveySubmissionResult {
